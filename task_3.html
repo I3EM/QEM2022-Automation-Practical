@@ -1,0 +1,381 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Task 3: Reconstructing a Square Image from Small Spots - QEM Practical: Introduction to Automation</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".\.\mdbook-admonish.css">
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="chapter-item expanded affix "><a href="prerequisites.html">Prerequisites</a></li><li class="chapter-item expanded "><a href="task_1.html"><strong aria-hidden="true">1.</strong> Task 1: Understanding what the microscope says</a></li><li class="chapter-item expanded "><a href="task_2.html"><strong aria-hidden="true">2.</strong> Task 2: Background Threading</a></li><li class="chapter-item expanded "><a href="task_3.html" class="active"><strong aria-hidden="true">3.</strong> Task 3: Reconstructing a Square Image from Small Spots</a></li><li class="chapter-item expanded "><a href="task_4.html"><strong aria-hidden="true">4.</strong> Task 4: Drawing a Circle</a></li><li class="chapter-item expanded "><a href="task_5.html"><strong aria-hidden="true">5.</strong> Task 5: Infinity Symbol</a></li><li class="chapter-item expanded "><a href="task_6.html"><strong aria-hidden="true">6.</strong> Task 6: Synchronization</a></li><li class="chapter-item expanded affix "><a href="functions_list.html">List of Microscope Related Functions</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">QEM Practical: Introduction to Automation</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="task-3-reconstructing-a-square-image-from-small-spots"><a class="header" href="#task-3-reconstructing-a-square-image-from-small-spots">Task 3: Reconstructing a Square Image from Small Spots</a></h1>
+<div style="text-align: center"><img src="diagram2.svg"></div>
+<p>The goal of this part is to reconstruct a square image by scanning the spot with
+the beam shift coils in both camera directions, as a “STEM” based method.</p>
+<p>Open the <a href="scripts/View.dm4" download>“View” image</a>, as well as the
+following script, in Digital Micrograph:</p>
+<pre><code class="language-java">Class Automation_Thread : object
+{
+	// Variables
+	number i, j
+	number count, size, nbpoints
+	number xpos, ypos, xpos_mem, ypos_mem
+	number wait
+
+	image img, img_sum
+
+
+	void Automation(object self)
+	{
+		// Square size
+		size = 200
+
+		// Wait time : delay between two successive instructions
+		wait = 0.1
+
+		// Nb of points per line or column
+		nbpoints = 7
+
+		// Acquisition of the inital beam position
+		EMGetBeamShift(xpos_mem, ypos_mem)
+
+		// Writing in the result window
+		Result(&quot;\n&quot;+DateStamp()+&quot;: &quot;+xpos_mem+&quot;\t&quot;+ypos_mem+&quot;\n&quot;)
+
+		// Acquisition of View, creation and display of the final image (img_sum)
+		img := GetFrontimage()
+		img_sum = img*0
+
+		SetName(img_sum, GetName(GetFrontImage())+&quot; Sum Image&quot;)
+		ShowImage(img_sum)
+
+
+		// Modification of the beam position
+		While (1&lt;2) // Infinite loop
+		{
+
+
+			If (ControlDown() &amp;&amp; ShiftDown()) break
+		}
+
+		// Go back to the initial beam position
+		EMSetBeamShift(xpos_mem, ypos_mem)
+
+		Result(&quot;End&quot;+&quot;\n&quot;)
+	}
+}
+
+
+// Main function
+// Creation and allocation of the object
+object object_o = Alloc(Automation_Thread)
+
+
+// Thread launch
+object_o.StartThread(&quot;Automation&quot;)
+</code></pre>
+<p>You can see the structure of the process to complete. The variables correspond
+to the size of the square, the number of points constituting each side, the
+waiting time between each point. An image (<code>img_sum</code>) is created and will
+represent the integration of all the recorded spots.</p>
+<p>We ask you to complete the missing part in order to scan the spot from left to
+right, and from top to bottom, in order to reconstruct a square image of defined
+size and number of points, and centered at the initial beam position (here middle
+of the image). </p>
+<p>To do this, at some point in the program you will need to add the line to
+integrate <code>img_sum</code>:</p>
+<pre><code class="language-java">img_sum = Tert(img&gt; Mean(img), img, img_sum)
+</code></pre>
+<p>In addition, print <code>x</code> and <code>y</code> positions of the beam into the Result window, and
+respect a waiting time between each spot. Don't forget to add the <code>Control + Shift</code> break in order to stop the process at any time.</p>
+<details id="admonition-solution" class="admonition example">
+<summary class="admonition-title">
+<p>Solution</p>
+<p><a class="admonition-anchor-link" href="#admonition-solution"></a></p>
+</summary>
+<div>
+<pre><code class="language-java">Class Automation_Thread : object
+{
+	// Variables
+	number i, j
+	number count, size, nbpoints
+	number xpos, ypos, xpos_mem, ypos_mem
+	number wait
+
+	image img, img_sum
+
+
+	void Automation(object self)
+	{
+		// Square size
+		size = 200
+
+		// Wait time : delay between two successive instructions
+		wait = 0.2
+
+		// Nb of points per line or column
+		nbpoints = 7
+
+		// Acquisition of the inital beam position
+		EMGetBeamShift(xpos_mem, ypos_mem)
+
+		// Writing in the result window
+		Result(&quot;\n&quot;+DateStamp()+&quot;: &quot;+xpos_mem+&quot;\t&quot;+ypos_mem+&quot;\n&quot;)
+
+		// Acquisition of View, creation and display of the final image (img_sum)
+		img := GetFrontimage()
+		img_sum = img*0
+
+		SetName(img_sum, GetName(GetFrontImage())+&quot; Sum Image&quot;)
+		ShowImage(img_sum)
+
+
+		// Modification of the beam position
+		While (1&lt;2) // Infinite loop
+		{
+			// For loop
+			For (j=0; j&lt;nbpoints; j++)
+			{
+				For (i=0; i&lt;nbpoints; i++)
+				{
+					xpos = xpos_mem-size/2+size*i/(nbpoints-1)
+					ypos = ypos_mem+size/2-size*j/(nbpoints-1)
+
+					EMSetBeamShift(xpos, ypos)
+
+					// Writing coordinates in the result window
+					Result(xpos+&quot;\t&quot;+ypos+&quot;\n&quot;)
+
+					sleep(wait)
+
+					// We replace the modified part coming from the new acquisition
+					img_sum = Tert(img&gt; Mean(img), img, img_sum)
+
+
+					If (ControlDown() &amp;&amp; ShiftDown()) break
+				}
+				If (ControlDown() &amp;&amp; ShiftDown()) break
+			}
+			If (ControlDown() &amp;&amp; ShiftDown()) break
+		}
+
+		// Go back to the initial beam position
+		EMSetBeamShift(xpos_mem, ypos_mem)
+
+		Result(&quot;End&quot;+&quot;\n&quot;)
+	}
+}
+
+
+// Main function
+// Creation and allocation of the object
+object object_o = Alloc(Automation_Thread)
+
+
+// Thread launch
+object_o.StartThread(&quot;Automation&quot;)
+</code></pre>
+</div>
+</details>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="task_2.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="task_4.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="task_2.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="task_4.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

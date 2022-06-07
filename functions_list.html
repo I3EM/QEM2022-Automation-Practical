@@ -1,0 +1,454 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>List of Microscope Related Functions - QEM Practical: Introduction to Automation</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".\.\mdbook-admonish.css">
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="chapter-item expanded affix "><a href="prerequisites.html">Prerequisites</a></li><li class="chapter-item expanded "><a href="task_1.html"><strong aria-hidden="true">1.</strong> Task 1: Understanding what the microscope says</a></li><li class="chapter-item expanded "><a href="task_2.html"><strong aria-hidden="true">2.</strong> Task 2: Background Threading</a></li><li class="chapter-item expanded "><a href="task_3.html"><strong aria-hidden="true">3.</strong> Task 3: Reconstructing a Square Image from Small Spots</a></li><li class="chapter-item expanded "><a href="task_4.html"><strong aria-hidden="true">4.</strong> Task 4: Drawing a Circle</a></li><li class="chapter-item expanded "><a href="task_5.html"><strong aria-hidden="true">5.</strong> Task 5: Infinity Symbol</a></li><li class="chapter-item expanded "><a href="task_6.html"><strong aria-hidden="true">6.</strong> Task 6: Synchronization</a></li><li class="chapter-item expanded affix "><a href="functions_list.html" class="active">List of Microscope Related Functions</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">QEM Practical: Introduction to Automation</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="list-of-microscope-related-functions"><a class="header" href="#list-of-microscope-related-functions">List of Microscope Related Functions</a></h1>
+<h2 id="beam-shift"><a class="header" href="#beam-shift">Beam Shift</a></h2>
+<pre><code class="language-java">// Get the current Beam Shift
+void EMGetBeamShift(number &amp;shiftX, number &amp;shiftY)
+
+// Set the beam shift to the values specified
+void EMSetBeamShift(number beamshiftX, number beamshiftY)
+
+// Change the beam shift by the amount specified in x and y
+void EMChangeBeamShift(number xAmount, number yAmount)
+
+// Get the Calibrated Beam Shift
+void EMGetCalibratedBeamShift(number &amp;calbeamshiftX, number &amp;calbeamshiftY)
+
+// Set the calibrated beam shift to the values specified
+void EMSetCalibratedBeamShift( number calbeamshiftX, number calbeamshiftY)
+
+// Changes the beam shift by the calibrated amounts supplied
+void EMChangeCalibratedBeamShift(number xAmount, number yAmount)
+</code></pre>
+<h2 id="beam-tilt"><a class="header" href="#beam-tilt">Beam Tilt</a></h2>
+<pre><code class="language-java">// Get the current Beam Tilts
+void EMGetBeamTilt(number &amp;tiltX, number &amp;tiltY)
+
+// Set the beam tilts to the values specified
+void EMSetBeamTilt(number beamtiltX, number beamtiltY )
+
+// Changes the beam tilt by the amount specified in x and y
+void EMChangeBeamTilt(number xAmount, number yAmount)
+
+// Get the calibrated beam tilt
+void EMGetCalibratedBeamTilt(number caltiltX, number  caltiltY)
+
+// Set the calibrated beam tilts to the values specified
+void EMSetCalibratedBeamTilt(number  setcaltiltX, number setcaltiltY)
+
+// Change the beam tilt by the calibrated amounts
+void EMChangeCalibratedBeamTilt(number xAmount, number yAmount)
+</code></pre>
+<h2 id="image-shift"><a class="header" href="#image-shift">Image Shift</a></h2>
+<pre><code class="language-java">// Get the current image shift x and y values
+void EMGetImageShift(number &amp;getimageshiftx, number &amp;getimageshifty)
+
+// Set the image shift to the values specified
+void EMSetImageShift(number setimageshiftX, number setimageshiftY)
+
+// Change the Image Shift by an uncalibrated amount
+void EMChangeImageShift(number xAmount, number yAmount)
+
+// Get the current calibrated image shifts
+void EMGetCalibratedImageShift(number &amp;calimgshiftX, number &amp;calimgshiftY)
+
+// Set the calibrated image shift to the values specified
+void EMSetCalibratedImageShift(number setcalimageshiftX, number setcalimageshiftY)
+
+// Change the image shift by a calibrated amount
+void EMChangeCalibratedImageShift(number xAmount, number yAmount)
+</code></pre>
+<h2 id="condensor-stigmation"><a class="header" href="#condensor-stigmation">Condensor Stigmation</a></h2>
+<pre><code class="language-java">// Get the current condensor stigmator values
+void EMGetCondensorStigmation(number &amp;condstigx, number &amp;condstigy)
+
+// Set the condensor stigmation values to the those specified
+void EMSetCondensorStigmation(number setcondstigX, number setcondstigY)
+
+// Change the Condensor Stigmation
+void EMChangeCondensorStigmation(number xAmount, number yAmount)
+</code></pre>
+<h2 id="objective-stigmation"><a class="header" href="#objective-stigmation">Objective Stigmation</a></h2>
+<pre><code class="language-java">// Change the (uncalibrated) objective stigmation
+void EMChangeObjectiveStigmation(number xAmount, number yAmount)
+
+// Get the current objective stigmation
+void EMGetObjectiveStigmation(number &amp;getstigx, number &amp;getstigy)
+
+// Set the objective stigmation value
+void EMSetObjectiveStigmation(number setobjstigX, number setobjstigY)
+
+// Get the current calibrated objective stigmation x and y values
+void EMGetCalibratedObjectiveStigmation(number &amp;calobjstigX, number &amp; calobjstigY)
+
+// Set the calibrated objective stigmation to the values specified
+void EMSetCalibratedObjectiveStigmation(number setcalobjstigX, number setcalobjstigY )
+
+// Change Calibrated Objective Stigmation
+void EMChangeCalibratedObjectiveStigmation(number xAmount, number yAmount)
+</code></pre>
+<h2 id="brightness"><a class="header" href="#brightness">Brightness</a></h2>
+<pre><code class="language-java">// Get the current Brightness
+number EMGetBrightness()
+
+// Set the brightness to the value specified
+void EMSetBrightness(number brightness)
+</code></pre>
+<h2 id="focus"><a class="header" href="#focus">Focus</a></h2>
+<pre><code class="language-java">// Get the current focus
+number EMGetFocus()
+
+// Set the focus to the value specified
+number EMSetFocus(number setfocus)
+
+// Change the focus - by an uncalibrated amount 
+void EMChangeFocus(number amount)
+
+// Get the current calibrated focus value
+number EMGetCalibratedFocus()
+
+// Set the calibrated focus to the value specified
+void EMSetCalibratedFocus(number setcalfocus)
+
+// Change the focus by the calibrated amount
+void EMChangeCalibratedFocus(number amount)
+</code></pre>
+<h2 id="stage"><a class="header" href="#stage">Stage</a></h2>
+<pre><code class="language-java">// Get the taggroup which (presumably) reports on the state of
+// calibrations - (presumably) which are, and which are not, present.
+TagGroup EMGetCalibrationStateTags()
+
+// Read the current stage positions. The values read are selected
+// by an axisflags parameter which can be any integer between 0 and
+// 31 - see function for details
+void EMGetStagePositions(number axisFlags, number &amp;stagepositionx, number &amp;stagepositiony, number &amp;stagepositionz, number &amp;stagealpha, number &amp;stagebeta)
+
+// Set the current stage positions. The values read are selected by an axisflags parameter
+// which can be any integer between 0 and 31 - see function for details
+void EMSetStagePositions(number axisFlags, number stagepositionx, number stagepositiony, number stagepositionz, number stagealpha, number stagebeta)
+
+// Get the current stage x and y positions
+void EMGetStageXY(number &amp;stagexposition, number &amp;stageyposition)
+
+// Set the stage x and y values to those specified
+void EMSetStageXY(number bisetstagex, number bisetstagey)
+
+// Get the current stage x position
+number EMGetStageX()
+
+// Set the stage x position to the value specified
+void EMSetStageX(number monosetstagex)
+
+// Get the current stage y position
+number EMGetStageY()
+
+// Set the stage y position to the value specified
+void EMSetStageY(number monosetstagey)
+
+// Get the current stage z position
+number EMGetStageZ()
+
+// Set the stage z position to the value specified
+void EMSetStageZ(number monosetstagez)
+
+// Get the current stage alpha (x) tilt
+number EMGetStageAlpha()
+
+// Set the stage alpha (x tilt) to the value specified
+void EMSetStageAlpha(number setstagealpha)
+
+// Get the current stage beta (y) tilt
+number EMGetStageBeta()
+
+// Set the stage beta (y tilt) to the value specified
+void EMSetStageBeta(number setstagebeta)
+</code></pre>
+<h2 id="screen"><a class="header" href="#screen">Screen</a></h2>
+<pre><code class="language-java">// Get the fluorescent screen position as an index
+number EMGetScreenPosition()
+
+// Set the screen position
+void EMSetScreenPosition(number setscreenpos)
+</code></pre>
+<h2 id="high-tension"><a class="header" href="#high-tension">High Tension</a></h2>
+<pre><code class="language-java">// Get the current high tension value
+number EMGetHighTension()
+</code></pre>
+<h2 id="magnification"><a class="header" href="#magnification">Magnification</a></h2>
+<pre><code class="language-java">// Get the current calibrated magnification
+number EMGetCalibratedMag(String deviceLocation, TagGroup stateInfo, number &amp;calMag, number matchOptions)
+
+// Get the index of the current magnification 
+number EMGetMagIndex()
+
+// Set the magnification index - each magnification has a numberical value eg 1- 40
+void EMSetMagIndex(number setmagindex)
+
+// Get the current magnification
+number EMGetMagnification()
+</code></pre>
+<h2 id="field-of-view"><a class="header" href="#field-of-view">Field of View</a></h2>
+<pre><code class="language-java">// Get the calibrated field of view for the selected camera location
+number EMGetCalibratedFieldOfView(String deviceLocation, TagGroup stateInfo, number calFOV, number matchOptions)
+</code></pre>
+<h2 id="camera-length"><a class="header" href="#camera-length">Camera Length</a></h2>
+<pre><code class="language-java">// Get the current camera length
+number EMGetCameraLength()
+
+// Get the calibrated camera length
+number EMGetCalibratedCameraLength(String deviceLocation, TagGroup stateInfo, number calCL, number matchOptions)
+</code></pre>
+<h2 id="microscope-utilities"><a class="header" href="#microscope-utilities">Microscope Utilities</a></h2>
+<pre><code class="language-java">// Get the microscope name
+String EMGetMicroscopeName()
+
+// Get the current illumination mode as a string
+String EMGetIlluminationMode()
+
+// Get a taggroup which contains the various illuminatin modes available
+TagGroup EMGetIlluminationModes()
+
+// Get the imaging optics mode
+String EMGetImagingOpticsMode()
+
+// Get the available imaging optics modes as a taggroup()
+TagGroup EMGetImagingOpticsModes()
+
+// Get the current microscope operation mode
+String EMGetOperationMode()
+
+// Get the current spot size
+number EMGetSpotSize()
+
+// Set the spot size to the values specified
+void EMSetSpotSize(number spotSize)
+
+// Update the calibration state
+void EMUpdateCalibrationState()
+
+// Return a boolean indicating if the microscope is ready
+number EMIsReady()
+
+// Wait until the microscope is ready
+void EMWaitUntilReady()
+</code></pre>
+<h2 id="test-functions"><a class="header" href="#test-functions">Test functions</a></h2>
+<pre><code class="language-java">// Test whether the microscope can return the camera length
+number EMCanGetCameraLength()
+
+// Test whether the microscope can return the HT value
+number EMCanGetHighTension()
+
+// Test whether the microscope can return the current illumination mode
+number EMCanGetIlluminationMode()
+
+// Test whether the microscope can return the current optics mode
+number EMCanGetImagingOpticsMode()
+
+// Test whether the microscope can return the current magnification
+number EMCanGetMagnification()
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="task_6.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="task_6.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
